@@ -1,6 +1,6 @@
 #step 1:
 
->> Click on setting⚙️and Click on Tools then scroll down to Maven_installations and edit Name(Maven) then click save
+>> Click setting⚙️and Click on Tools then scroll down to Maven_installations and edit Name (Maven) then click save
 
 #step 2:
 
@@ -12,7 +12,7 @@
  
 #step 3:
 
->> + click_New Item
+>> + click New_Item
 
 #step 4:
 
@@ -20,8 +20,8 @@
 
 #step 5:
 
->> Click the item name ☀️(project) and click on ⚙️configure
->> In General click checkbox ✅️GitHub project and provide Project url (https://github.com/vinithcriz/Jenkins-Project.git/)
+>> Click the item name ☀️(project) and click ⚙️configure
+>> In General click checkbox ✅️GitHub project and provide Project url (https://github.com/vinithcriz/Jenkins-Project.git/) and also edit the Branch_name to #./main
 >> In Triggers click checkbox ✅️Build whenever a SNAPSHOT dependency is built and also click ✅️GitHub hook trigger for GITScm polling
 >> In pipeline , click pipeline script and add below script 
   
