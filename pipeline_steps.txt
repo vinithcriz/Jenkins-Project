@@ -1,0 +1,57 @@
+#step 1:
+
+>> Click on setting⚙️and Click on Tools then scroll down to Maven_installations and edit Name(Maven) then click save
+
+#step 2:
+
+>> Click over Plugins and click Avaliable plugins then search for below plugins to install 
+ * Maven Integration plugin
+ * Pipeline Maven Integration Plugin
+ * Pipeline Utility Steps
+ * Pipeline: Stage View Plugin
+ 
+#step 3:
+
+>> + click_New Item
+
+#step 4:
+
+>> Enter an item name (project) and click 👉️PIPELINE and ok
+
+#step 5:
+
+>> Click the item name ☀️(project) and click on ⚙️configure
+>> In General click checkbox ✅️GitHub project and provide Project url (https://github.com/vinithcriz/Jenkins-Project.git/)
+>> In Triggers click checkbox ✅️Build whenever a SNAPSHOT dependency is built and also click ✅️GitHub hook trigger for GITScm polling
+>> In pipeline , click pipeline script and add below script 
+  
+  pipeline {
+    agent any
+
+    tools {
+        maven 'Maven' 
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo '🔨 Building the application using Maven...'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vinithcriz/Jenkins-Project.git']])
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+         }
+      } 
+        post {
+            always {
+                junit(
+                    allowEmptyResults:true,
+                    testResults: '*test-reports/.xml'
+                    )
+            }
+        }
+}
+
+>> click apply and save
+
+#step 6:
+
+>> Click on project and then click on Build_Now
