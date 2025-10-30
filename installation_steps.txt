@@ -49,3 +49,6 @@ jenkins_installation_using_docker:
 
 docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v /var/run/docker.sock:/var/run/docker.sock -v /var/jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
+sudo chown -R 1000:1000 /path/to/jenkins_home
+sudo chmod -R 755 /path/to/jenkins_home
+
